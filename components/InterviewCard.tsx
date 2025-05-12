@@ -4,14 +4,15 @@ import Image from "next/image";
 import { getRandomInterviewCover } from "@/lib/utils";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import DisplayTechIcons from "./DisplayTechIcons";
 
 const InterviewCard = ({
   interviewId,
-  userId,
+  // userId,
   type,
   role,
   techstack,
-  finalized,
+  // finalized,
   createdAt,
 }: InterviewCardProps) => {
   const feedback = null as Feedback | null;
@@ -21,7 +22,7 @@ const InterviewCard = ({
   ).format("MMM D, YYYY");
 
   return (
-    <div className="card-border min-w-[360px] min-h-96: max-sm:w-full">
+    <div className="card-border max-w-[360px] min-h-96: max-sm:w-full">
       <div className="card-interview">
         <div>
           <div className="absolute top-0 right-0 px-4 py-2 w-fit bg-light-600 rounded-bl-lg ">
@@ -33,7 +34,7 @@ const InterviewCard = ({
             alt="cover"
             height={90}
             width={90}
-            className="rounded-full object-fit size-[90px]"
+            className="rounded-full object-fit size-[70px]"
           />
 
           <h3 className="mt-5 capitalize">{role} interview</h3>
@@ -63,7 +64,7 @@ const InterviewCard = ({
         </div>
 
         <div className="flex flex-row justify-between">
-          <p>techicons</p>
+          <DisplayTechIcons techStack={techstack} />
 
           <Button className="btn-primary">
             <Link
