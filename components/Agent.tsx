@@ -11,8 +11,16 @@ enum CallStatus {
 }
 
 const Agent = ({ userName }: AgentProps) => {
-  const callStatus = CallStatus.ACTIVE; // Replace with actual logic to determine the call status
+  const callStatus = CallStatus.INACTIVE; // Replace with actual logic to determine the call status
   const isSpeaking = true; // Replace with actual logic to determine if the agent is speaking
+  const messages = [
+    "what is your name?",
+    "my name is john doe",
+    "what is your age?",
+    "i am 25 years old",
+  ];
+
+  const lastMessage = messages[messages.length - 1];
   return (
     <>
       <div className="call-view">
@@ -42,6 +50,25 @@ const Agent = ({ userName }: AgentProps) => {
           </div>
         </div>
       </div>
+      {/* message box */}
+
+      {messages.length > 0 && (
+        <div className="transcript-border">
+          <div className="transcript">
+            <p
+              key={lastMessage}
+              className={cn(
+                "transition-opacity duration-500 opacity-0",
+                "animate-fadeIn opacity-100"
+              )}
+            >
+              {lastMessage}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* call button */}
       <div className="w-full flex justify-center">
         {callStatus === "ACTIVE" ? (
           <button className="btn-disconnect">End</button>
