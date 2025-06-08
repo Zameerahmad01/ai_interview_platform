@@ -10,7 +10,7 @@ import {
 
 const page = async () => {
   const user = await getCurrentUser();
-  const userInterviews = await getInterviewsByUserId(user?.id!);
+  const userInterviews = user?.id ? await getInterviewsByUserId(user.id) : null;
 
   const hasPastInterviews = userInterviews && userInterviews.length > 0;
   return (
